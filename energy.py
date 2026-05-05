@@ -177,6 +177,12 @@ def okay():
     oka=db.session.query(mechi).join(mechia).filter(mechia.magoli==1).all()
     return render_template('oka.html',oka=oka)
 
+#kuchuja mechi kulingana na tarehe(jana,leo na kesho)
+@app.route('/filter')
+def filter():
+   tarehe=datetime.now
+   formatted=tarehe.strftime('%Y-%m-%d')
+
 #ADMIN HOME
 @app.route('/adminhome')
 def adminhome():
@@ -255,6 +261,8 @@ def deleteusers(id):
    db.session.delete(matokeo)
    db.session.commit()
    return redirect(url_for('users'))
+
+
 
 
 if __name__=='__main__':

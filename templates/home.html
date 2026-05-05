@@ -35,12 +35,19 @@
         <div class="modal fade" id="ezra">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="card p-5 ">
-                        <div class="modal-title">habari</div>
-                        <button type="buttton" class="btn-close" data-bs-dismiss="modal "></button>
-                        <div class="mt-5 d-flex justify-content-center">
-                            <p class="p-3">bonyeza hapa kuangalia matokeo</p>
-                            <p class="p-3">hakikisha unafanya kila kitu kwa umakini</p>
+                    <div class="card p-5"style=height: 500px; >
+                        <button type="button" class="btn-close me-3" data-bs-dismiss="modal "></button>
+                        <div class="mt-1 d-flex justify-content-center">
+                            <p>KARIBU</p>
+                        </div>
+                        <div class="mt-2 d-flex justify-content-center">
+                            <p class="p-1">bonyeza hapa kuangalia matokeo
+                                kama unataka ushindi wa uhakika kila siku hapa hapa
+                                kwa sababu ushindi kama kawaida kwetu
+                            </p>
+                        </div>
+                        <div class="bg-light text-center">
+                            <a href="#">bonyeza hapa kupata offer</a>
                         </div>
                     </div>
                 </div>
@@ -50,9 +57,13 @@
 </div>
 </body>
 <script>
-    setTimeout(function(){
-        new bootstrap.Modal(document.getElementById('ezra')).show()
-    },10000)
+    let ezra =new bootstrap.Modal(document.getElementById('ezra'))
+    setInterval(function(){
+        ezra.show()
+        setTimeout(function(){
+            ezra.hide()
+        },5000)
+    },30000)
 </script>
 {% endblock %}
     
