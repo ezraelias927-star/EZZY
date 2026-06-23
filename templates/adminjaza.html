@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <div class="card p-5 mt-5">
-                <form action="/andika" method="POST">
+                <form action="/andika" method="POST" enctype="multipart/form-data">
                     <div class="form-label align-items-center text-center">
                     <input type="text" name="timuA" placeholder="andika team A " class="form-control mb-3 mt-4 text-center">
                     <input type="text" name="timuB" placeholder="andika team B" class="form-control pw-3 mb-3 text-center">
@@ -16,7 +16,12 @@
                     <button type="submit" class="form-control  text-center">submit</button>
                     </div>
                 </form>
+                <form action="/excel" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="mechi" placeholder="pakia excel hapa" class="form-control text-center">
+                    <button type="submit" class="form-control text-center">submit</button>
+                </form>
                 </div>
+                <a href="/receive">pokea mafile ya excel</a>
                 <div class="text-center text-decoration-none mt-5">
                     <a href="/nyumbani">ANDIKA TAARIFA YA KILA MECHI</a>
                 </div>

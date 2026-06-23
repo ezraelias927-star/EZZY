@@ -8,6 +8,9 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///mimi.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=False
 db=SQLAlchemy(app)
 from datetime import datetime
+import os
+app.config['UPLOAD_FOLDER']='static/uploads'
+import pandas as pd
     
 
 class mechi(db.Model):
@@ -240,6 +243,31 @@ def spec():
 def users():
    matokeo=register.query.all()
    return render_template('adminusers.html',matokeo=matokeo)
+
+#KUUPLOAD EXCEL
+@app.route('/excel',methods=["POST"])
+def excel():
+   if 'mechi' not in request.files:
+      return 'hakuna'
+   else:
+     file=request.files.get('mechi')
+     filename=file.filename
+     path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
+     file.save(path)
+     return 'ezra'
+
+#KUSOMA EXCEL NA KUIWEKA KWENYE DATABASE
+@app.route('/receive')
+def receive():
+   df=pd.read_excel('static/uploads/spotika.xlsx',header=1)
+   dict=df.to_dict(orient='records')
+   print(dict)
+   for i in dict:
+      mech=mechi(timuA=i['timuA'],timuB=i['timuB'],aina=i['aina'],odds=i['odds'],status=i['status '],special=i['special'],tarehe=i['tarehe'])
+      db.session.add(mech)
+   db.session.commit()
+   return 'tayari'
+   
 
 #KUUPDATE USERS WALIOPO
 @app.route('/adminupdates/<int:id>',methods=['POST'])
