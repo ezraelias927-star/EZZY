@@ -1,69 +1,131 @@
 {% extends "base.html" %}
 {% block content %}
-<body>
-<div class="container bg-light">
-    <img src="{{ url_for('static',filename='images/bg.jpg')}}"alt='wakamalia' style="height:300px" class="w-100 mt-3">
-    <div class="row g-3 justify-content-center mt-3">
-        <div class="fw-bold text-center mt-3 text-warning display-1">
-            <a>KARIBU</a>
+
+<!-- HERO SECTION -->
+<section class="py-5 text-center" style="background:linear-gradient(135deg,#1A3A5C 0%,#0F2A45 100%);">
+  <div class="container py-3">
+    <span class="badge px-3 py-2 mb-3 fw-semibold" style="background:#10B98122;color:#10B981;border:1px solid #10B98144;">
+      ⚡ Wataalamu wa Miaka 10+
+    </span>
+    <h1 class="display-5 fw-bold text-white mb-3">Ushindi Si Bahati —<br><span style="color:#10B981;">Ni Sayansi.</span></h1>
+    <p class="text-secondary mx-auto mb-4" style="max-width:520px;">
+      Tunachambua mechi kwa undani ili wewe uweke dau kwa ujasiri na akili.
+    </p>
+    <a href="/joins" class="btn fw-bold px-4 py-2 me-2 text-white" style="background:#10B981;border-radius:8px;">Angalia Machaguo</a>
+    <a href="/spec" class="btn fw-bold px-4 py-2" style="border:1px solid #10B981;color:#10B981;border-radius:8px;">Special Tips</a>
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="py-4" style="background:#F1F5F9;">
+  <div class="container">
+    <div class="row g-3 justify-content-center text-center">
+      <div class="col-6 col-md-3">
+        <div class="p-3 rounded-3 bg-white shadow-sm">
+          <div class="fw-bold fs-4" style="color:#1A3A5C;">95%</div>
+          <div class="small" style="color:#64748B;">Usahihi wa Tips</div>
         </div>
-        <p class="text-center mt-2 fs-5">Karibu katika website yetu ambapo tunachambua kuhusu mechi mbalimbali
-            ktoka kwa wataalamu wetu wenye uzoefu wa zaidi ya miaka 10 katika beting
-        </p>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 rounded-3 bg-white shadow-sm">
+          <div class="fw-bold fs-4" style="color:#1A3A5C;">10+</div>
+          <div class="small" style="color:#64748B;">Miaka ya Uzoefu</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 rounded-3 bg-white shadow-sm">
+          <div class="fw-bold fs-4" style="color:#1A3A5C;">500+</div>
+          <div class="small" style="color:#64748B;">Wanachama</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="p-3 rounded-3 bg-white shadow-sm">
+          <div class="fw-bold fs-4" style="color:#1A3A5C;">Daily</div>
+          <div class="small" style="color:#64748B;">Tips Mpya Kila Siku</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHI SECTION -->
+<section class="py-5" style="background:#F1F5F9; position:relative; overflow:hidden;">
+  <img src="{{ url_for('static', filename='images/bg.png') }}"
+     style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; object-position:center; opacity:0.08; z-index:0;">
+  <div class="py-3" style="background:rgba(248,250,252,0.93);">
+    <div class="container">
+      <h5 class="fw-bold text-center mb-4" style="color:#1A3A5C;">⚽ Mechi za Leo</h5>
+      <div class="row g-3 justify-content-center">
         {% for h in hom %}
-        <div class="col-12 col-md-6">
-            <div class="card h-100 g-3 shadow rounded p-3">
-                <div class="card-body text-center p-3 mt-5">mechi ya leo</div>
-                <div class="ms-2 p-3 ">
-                    <span class=" p-3 rounded">  {{ h.tarehe }}</span>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card border-0 shadow-sm rounded-3 h-100" style="border-left:4px solid #10B981 !important;">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="small fw-semibold" style="color:#64748B;">📅 {{ h.tarehe }}</span>
+                <span class="badge" style="background:#10B98122;color:#10B981;">Live</span>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <div class="text-center">
+                  <div class="fw-bold" style="color:#0F172A;">{{ h.timuA }}</div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <div class="border rounded bg-light p-3 fw-bold">{{ h.timuA }}</div>
-                    <div class="p-3 fw-bold">vs</div>
-                    <div class="border rounded bg-light p-3 fw-bold">{{ h.timuB }}</div>
+                <div class="fw-bold px-3" style="color:#1A3A5C;">VS</div>
+                <div class="text-center">
+                  <div class="fw-bold" style="color:#0F172A;">{{ h.timuB }}</div>
                 </div>
-                <div class="d-flex mt-2 justify-content-center">
-                        <div class=" p-3">{{ h.aina }}</div>
-                </div>
-                <div class="d-flex mt-2 justify-content-center">
-                    <div class="bg-success rounded p-3 mb-3 fw-bold"> odds {{ h.odds }}</div>
-                </div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-3 pt-3" style="border-top:1px solid #E2E8F0;">
+                <span class="small" style="color:#64748B;">{{ h.aina }}</span>
+                <span class="fw-bold px-3 py-1 rounded-2 text-white" style="background:#10B981;">
+                  {{ h.odds }}
+                </span>
+              </div>
             </div>
+          </div>
         </div>
         {% endfor %}
-        </div>
-        <div class="modal fade" id="ezra">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="card p-5"style=height: 500px; >
-                        <button type="button" class="btn-close me-3" data-bs-dismiss="modal "></button>
-                        <div class="mt-1 d-flex justify-content-center">
-                            <p>KARIBU</p>
-                        </div>
-                        <div class="mt-2 d-flex justify-content-center">
-                            <p class="p-1">bonyeza hapa kuangalia matokeo
-                                kama unataka ushindi wa uhakika kila siku hapa hapa
-                                kwa sababu ushindi kama kawaida kwetu
-                            </p>
-                        </div>
-                        <div class="bg-light text-center">
-                            <a href="#">bonyeza hapa kupata offer</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="py-5 text-center" style="background:#1A3A5C;">
+  <div class="container">
+    <h4 class="fw-bold text-white mb-2">Uko Tayari Kushinda?</h4>
+    <p class="mb-4" style="color:#94A3B8;">Jiunge nasi leo — ushindi kama kawaida kwetu.</p>
+    <a href="/register" class="btn fw-bold px-5 py-2 text-white" style="background:#10B981;border-radius:8px;">
+      Jisajili Sasa — Bure!
+    </a>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal fade" id="ezra">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-3 shadow p-4">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="text-center mt-1">
+        <div class="mb-2" style="font-size:2rem;">🏆</div>
+        <h5 class="fw-bold" style="color:#1A3A5C;">Unataka Ushindi wa Uhakika?</h5>
+        <p class="small mt-2" style="color:#64748B;">
+          Special tips zetu zimekusaidia watu wengi kushinda kila siku. Jiunge nawe leo!
+        </p>
+        <a href="/spec" class="btn fw-bold text-white mt-2 px-4" style="background:#10B981;border-radius:8px;">
+          Pata Offer Sasa
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
-</body>
+
 <script>
-    let ezra =new bootstrap.Modal(document.getElementById('ezra'))
-    setInterval(function(){
-        ezra.show()
-        setTimeout(function(){
-            ezra.hide()
-        },5000)
-    },30000)
+  let ezra = new bootstrap.Modal(document.getElementById('ezra'))
+  setInterval(function(){
+    ezra.show()
+    setTimeout(function(){ ezra.hide() }, 5000)
+  }, 30000)
 </script>
+
 {% endblock %}
-    

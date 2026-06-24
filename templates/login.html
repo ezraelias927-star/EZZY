@@ -1,32 +1,63 @@
 {% extends "base.html" %}
 {% block content %}
-<body>
-    <div class="container bg-light">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="text-center mt-4 fw-bold text-primary fs-5">LOGIN HAPA</div>
-                <div class="card mt-3 rounded shadow p-5">
-                   <div class="d-flex justify-content-center">
-                    {% with messages=get_flashed_messages(with_categories=true) %}
-                     {% if messages %}
-                       {% for category,message in messages%}
-                       <p class="text-danger">{{ message}} </p>
-                        {%endfor%} 
-                     {%endif%}
-                    {%endwith%}     
-                   </div>          
-                <form action="/login" method="POST">
-                    <input type="text" name="username" placeholder="andika username" class="form-control mb-5 mt-2 text-center">
-                    <input type="password" name="password" placeholder="andika password" class="form-control mb-5 text-center">
-                    <input type="text" name="email" placeholder="andika email" class="form-control mb-5 text-center"> 
-                    <button type="submit" class="form-control mb-5 text-primary">LOGIN</button>
-                </form>
-                <div class="mb-3">
-                    <a href="/register" class="p-5 mb-3">bado hujajisajili?sasa!</a>
-                </div>
-                </div>
-            </div>
+<body style="background-color:#F8FAFC;">
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-5">
+
+      <!-- Header -->
+      <div class="text-center mb-4">
+        <h4 class="fw-bold" style="color:#1A3A5C; letter-spacing:1px;">LOGIN HAPA</h4>
+        <p class="small" style="color:#64748B;">Karibu tena!</p>
+      </div>
+
+      <!-- Card -->
+      <div class="card border shadow-sm rounded-3 p-4" style="border-color:#E2E8F0;">
+
+        <!-- Flash Messages -->
+        {% with messages=get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <p class="text-danger small mb-3">⚠ {{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Form -->
+        <form action="/login" method="POST">
+
+          <div class="mb-3">
+            <input type="text" name="username" placeholder="Username"
+                   class="form-control" style="border-color:#E2E8F0; border-radius:8px;">
+          </div>
+
+          <div class="mb-3">
+            <input type="password" name="password" placeholder="Password"
+                   class="form-control" style="border-color:#E2E8F0; border-radius:8px;">
+          </div>
+
+          <div class="mb-4">
+            <input type="text" name="email" placeholder="Email"
+                   class="form-control" style="border-color:#E2E8F0; border-radius:8px;">
+          </div>
+
+          <button type="submit" class="btn w-100 fw-bold text-white"
+                  style="background:#1A3A5C; border-radius:8px;">LOGIN</button>
+
+        </form>
+
+        <!-- Register Link -->
+        <div class="text-center mt-3">
+          <a href="/register" class="small" style="color:#1A3A5C;">
+            Bado hujajisajili? <span style="color:#10B981;">Jisajili sasa!</span>
+          </a>
         </div>
+
+      </div>
     </div>
+  </div>
+</div>
+
 </body>
 {% endblock %}

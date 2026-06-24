@@ -1,39 +1,101 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>betting system</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .active {
-            color: yellow !important;
-            background:light
-        }
-    </style>
-</head>
-<body class="bg-light">
-    <nav class="navbar bg-dark navbar-dark navbar-expand-lg sticky-top">
-        <div class="container-fluid p-2">
-                <div class='navbar-brand fw-bold'>SPOTIKA</div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#waka">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="waka">
-                <div class="navbar-nav ms-auto ">
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/'%}active{%endif%} " href="/">HOME</a>
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/register' %}active{% endif %}" href="/register">JISAJILI</a>
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/joins'%}active{% endif %}" href="/joins">ANGALIA MACHAGUO</a>
-                <a class="nav-link  ms-2 rounded  fw-bold {% if request.path=='/spec'%}active{%endif%}" href="/spec">SPECIAL TIPS</a>
-                </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        </div>
-    </nav>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    {% block content %}
-    {% endblock %}
-</body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotika Betting</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
 
+    /* Navbar */
+    .navbar { background-color: #1A3A5C !important; padding: 12px 0; }
+    .navbar-brand { color: #10B981 !important; font-size: 1.4rem; letter-spacing: 2px; }
+    .nav-link { color: #CBD5E1 !important; font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.2s; }
+    .nav-link:hover { color: #ffffff !important; }
+    .nav-link.active {
+      color: #10B981 !important;
+      border-bottom: 2px solid #10B981;
+      background: transparent !important;
+    }
+
+    /* Footer */
+    footer { background-color: #1A3A5C; color: #94A3B8; font-size: 0.82rem; }
+    footer a { color: #10B981; text-decoration: none; }
+    footer a:hover { color: #ffffff; }
+    .footer-brand { color: #ffffff; font-size: 1.1rem; font-weight: 700; letter-spacing: 2px; }
+    .footer-divider { border-color: #2D5278; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold">⚡ SPOTIKA</a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <div class="navbar-nav ms-auto gap-1">
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/' %}active{% endif %}" href="/">HOME</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/register' %}active{% endif %}" href="/register">JISAJILI</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/joins' %}active{% endif %}" href="/joins">MACHAGUO</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/spec' %}active{% endif %}" href="/spec">SPECIAL TIPS</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  {% block content %}
+  {% endblock %}
+
+  <!-- FOOTER -->
+  <footer class="mt-5 pt-4 pb-3">
+    <div class="container">
+      <div class="row gy-3">
+
+        <!-- Brand -->
+        <div class="col-12 col-md-4">
+          <div class="footer-brand mb-2">⚡ SPOTIKA</div>
+          <p style="color:#94A3B8;">Uchambuzi wa kitaalamu wa mechi — ushindi kama kawaida kwetu.</p>
+        </div>
+
+        <!-- Links -->
+        <div class="col-6 col-md-4">
+          <p class="fw-semibold text-white mb-2">Viungo</p>
+          <div class="d-flex flex-column gap-1">
+            <a href="/">Home</a>
+            <a href="/register">Jisajili</a>
+            <a href="/joins">Machaguo</a>
+            <a href="/spec">Special Tips</a>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="col-6 col-md-4">
+          <p class="fw-semibold text-white mb-2">Wasiliana</p>
+          <div class="d-flex flex-column gap-1">
+            <span>📧 info@spotika.co.tz</span>
+            <span>📱 +255 700 000 000</span>
+            <span>🌍 Dar es Salaam, TZ</span>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="footer-divider mt-4">
+      <div class="text-center" style="color:#64748B;">
+        © 2025 Spotika. Haki zote zimehifadhiwa. |
+        <span style="color:#10B981;">Cheza kwa busara.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

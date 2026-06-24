@@ -1,32 +1,44 @@
 {% extends "admin1base.html" %}
 {% block content %}
-<body>
-    <div class="container bg-light shadow mt-5 mb-5 p-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
-                <div class="card p-5 mt-5">
-                <form action="/andika" method="POST" enctype="multipart/form-data">
-                    <div class="form-label align-items-center text-center">
-                    <input type="text" name="timuA" placeholder="andika team A " class="form-control mb-3 mt-4 text-center">
-                    <input type="text" name="timuB" placeholder="andika team B" class="form-control pw-3 mb-3 text-center">
-                    <input type="text" name="aina" placeholder="andika aina ya chaguo " class="form-control mb-3 text-center">
-                    <input type="number" step="any" name="odds" placeholder="andika odds hapa" class="form-control mb-3 text-center">
-                    <input type="text" name="special" placeholder="special" class="form-control mb-3 text-center">
-                    <input type="text" name="tarehe" placeholder="date" class="form-control mb-3 text-center">
-                    <button type="submit" class="form-control  text-center">submit</button>
-                    </div>
-                </form>
-                <form action="/excel" method="POST" enctype="multipart/form-data">
-                    <input type="file" name="mechi" placeholder="pakia excel hapa" class="form-control text-center">
-                    <button type="submit" class="form-control text-center">submit</button>
-                </form>
-                </div>
-                <a href="/receive">pokea mafile ya excel</a>
-                <div class="text-center text-decoration-none mt-5">
-                    <a href="/nyumbani">ANDIKA TAARIFA YA KILA MECHI</a>
-                </div>
-            </div>
-        </div>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-6">
+
+      <h6 class="fw-bold mb-4 text-center" style="color:#1A3A5C;">⚙ Admin — Ingiza Mechi</h6>
+
+      <!-- Form 1: Manual Entry -->
+      <div class="card border-0 shadow-sm rounded-3 p-4 mb-3">
+        <p class="fw-semibold small mb-3" style="color:#64748B;">✏ Ingiza Mechi Moja kwa Moja</p>
+        <form action="/andika" method="POST" enctype="multipart/form-data">
+          <input type="text" name="timuA" placeholder="Team A" class="form-control mb-2 small">
+          <input type="text" name="timuB" placeholder="Team B" class="form-control mb-2 small">
+          <input type="text" name="aina" placeholder="Aina ya chaguo" class="form-control mb-2 small">
+          <input type="number" step="any" name="odds" placeholder="Odds" class="form-control mb-2 small">
+          <input type="text" name="special" placeholder="Special" class="form-control mb-2 small">
+          <input type="text" name="tarehe" placeholder="Tarehe" class="form-control mb-3 small">
+          <button type="submit" class="btn w-100 text-white fw-semibold small" style="background:#1A3A5C;">Submit</button>
+        </form>
+      </div>
+
+      <!-- Form 2: Excel Upload -->
+      <div class="card border-0 shadow-sm rounded-3 p-4 mb-3">
+        <p class="fw-semibold small mb-3" style="color:#64748B;">📂 Pakia Excel</p>
+        <form action="/excel" method="POST" enctype="multipart/form-data">
+          <input type="file" name="mechi" class="form-control mb-3 small">
+          <button type="submit" class="btn w-100 text-white fw-semibold small" style="background:#1A3A5C;">Submit</button>
+        </form>
+      </div>
+
+      <!-- Links -->
+      <div class="d-flex justify-content-between px-1">
+        <a href="/receive" class="btn w-100 fw-semibold text-white mt-2" style="background:#10B981; border-radius:8px;">
+  📥 Pokea Mafile ya Excel
+</a>
+      </div>
+
     </div>
-</body>
+  </div>
+</div>
+
 {% endblock %}

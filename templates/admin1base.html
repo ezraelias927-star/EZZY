@@ -1,38 +1,51 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>betting system</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .active {
-            color: yellow !important;
-            background:light
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotika — Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #F8FAFC; }
+
+    .navbar { background-color: #1A3A5C !important; padding: 12px 0; }
+    .navbar-brand { color: #e74c3c !important; font-size: 1.4rem; letter-spacing: 2px; }
+    .nav-link { color: #CBD5E1 !important; font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.2s; }
+    .nav-link:hover { color: #ffffff !important; }
+    .nav-link.active {
+      color: #10B981 !important;
+      border-bottom: 2px solid #10B981;
+      background: transparent !important;
+    }
+  </style>
 </head>
-<body class="bg-light">
-    <nav class="navbar bg-dark navbar-dark navbar-expand-lg sticky-top">
-        <div class="container-fluid p-2">
-                <div class='navbar-brand fw-bold text-danger'>ADMIN DASHBOARD</div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#waka">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="waka">
-                <div class="navbar-nav ms-auto ">
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/andika'%}active{%endif%} " href="/andika">JAZA MECHI</a>
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/adminuser' %}active{% endif %}" href="/adminuser">ANGALIA MECHI</a>
-                <a class="nav-link  ms-2 fw-bold {% if request.path=='/users'%}active{% endif %}" href="/users">WALIOJISAJILI</a>
-                <a class="nav-link  ms-2 rounded  fw-bold {% if request.path=='/'%}active{%endif%}" href="/">RUDI KWA USERS</a>
-                </div>
-                    </a>
-                </div>
-            </div>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold">⚙ ADMIN DASHBOARD</a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#adminNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="adminNav">
+        <div class="navbar-nav ms-auto gap-1">
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/andika' %}active{% endif %}" href="/andika">JAZA MECHI</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/adminuser' %}active{% endif %}" href="/adminuser">ANGALIA MECHI</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/users' %}active{% endif %}" href="/users">WALIOJISAJILI</a>
+          <a class="nav-link fw-semibold px-3 {% if request.path=='/' %}active{% endif %}" href="/">RUDI KWA USERS</a>
         </div>
-        </div>
-    </nav>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    {% block content %}
-    {% endblock %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  {% block content %}
+  {% endblock %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html>
