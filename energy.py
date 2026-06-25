@@ -247,26 +247,33 @@ def users():
 #KUUPLOAD EXCEL
 @app.route('/excel',methods=["POST"])
 def excel():
-   if 'mechi' not in request.files:
-      return 'hakuna'
-   else:
+  try:
      file=request.files.get('mechi')
      filename=file.filename
      path=os.path.join(app.config['UPLOAD_FOLDER'],filename)
      file.save(path)
-     return 'ezra'
+     flash('umefanikiwa kupakia file lako la spotika','success')
+     return render_template('adminjaza.html')
+  except:
+     flash('hujaweka file lolote!,pakia tena!!','danger')
+     return render_template('adminjaza.html')
 
 #KUSOMA EXCEL NA KUIWEKA KWENYE DATABASE
 @app.route('/receive')
 def receive():
-   df=pd.read_excel('static/uploads/spotika.xlsx',header=1)
+ try:
+   df=pd.read_excel('static/uploads/spotika.xlsx',header=1,dtype={'tarehe': str})
    dict=df.to_dict(orient='records')
    print(dict)
    for i in dict:
       mech=mechi(timuA=i['timuA'],timuB=i['timuB'],aina=i['aina'],odds=i['odds'],status=i['status '],special=i['special'],tarehe=i['tarehe'])
       db.session.add(mech)
    db.session.commit()
-   return 'tayari'
+   flash('umefanikiwa kuweka data zako kwenye database','database')
+   return render_template('adminjaza.html')
+ except:
+    flash('hujaupload spotika.xlsx','upload')
+    return render_template('adminjaza.html')
    
 
 #KUUPDATE USERS WALIOPO

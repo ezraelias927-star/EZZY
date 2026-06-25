@@ -23,6 +23,26 @@
 
       <!-- Form 2: Excel Upload -->
       <div class="card border-0 shadow-sm rounded-3 p-4 mb-3">
+        <div>
+            <!-- Flash Messages -->
+        {% with messages=get_flashed_messages(category_filter=["success"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="text-primary small mb-3">⚠ {{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
+         <div>
+          <!-- Flash Messages -->
+        {% with messages=get_flashed_messages(category_filter=["upload"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="text-danger small mb-3">⚠ {{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
         <p class="fw-semibold small mb-3" style="color:#64748B;">📂 Pakia Excel</p>
         <form action="/excel" method="POST" enctype="multipart/form-data">
           <input type="file" name="mechi" class="form-control mb-3 small">
@@ -31,10 +51,30 @@
       </div>
 
       <!-- Links -->
-      <div class="d-flex justify-content-between px-1">
+      <div class="d-flex ">
+          <div>
+          <!-- Flash Messages -->
+        {% with messages=get_flashed_messages(category_filter=["database"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="text-primary small mb-3"> {{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
         <a href="/receive" class="btn w-100 fw-semibold text-white mt-2" style="background:#10B981; border-radius:8px;">
-  📥 Pokea Mafile ya Excel
-</a>
+  📥 weka data kwenye database
+        </a>
+        <div>
+          <!-- Flash Messages -->
+        {% with messages=get_flashed_messages(category_filter=["danger"]) %}
+          {% if messages %}
+            {% for message in messages %}
+              <p class="text-danger small mb-3">⚠ {{ message }}</p>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        </div>
       </div>
 
     </div>
