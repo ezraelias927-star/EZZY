@@ -4,3 +4,4 @@ venv
 static
 !static/images/bg.png
 static/uploads/spotika.xlsx
+.env

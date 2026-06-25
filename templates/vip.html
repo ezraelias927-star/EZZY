@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="py-5" style="background:#F8FAFC;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-5">
+
+        <!-- Flash Message -->
+        {% with messages=get_flashed_messages(category_filter=["danger"]) %}
+          {% if messages %}
+            {% for message in messages %}
+            <div class="d-flex align-items-center gap-2 rounded-3 px-4 py-3 mb-4"
+                 style="background:#FEF2F2; border-left:4px solid #EF4444;">
+              <span style="color:#EF4444; font-size:1.1rem;">⚠</span>
+              <span class="small fw-semibold" style="color:#991B1B;">{{ message }}</span>
+            </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Header -->
+        <div class="text-center mb-4">
+          <span class="badge px-3 py-2 mb-2 fw-semibold" style="background:#10B98122;color:#10B981;border:1px solid #10B98144;">
+            👑 VIP Membership
+          </span>
+          <h4 class="fw-bold mt-2" style="color:#1A3A5C;">Jiunge na VIP Club</h4>
+          <p class="small" style="color:#64748B;">Ushindi wa kweli unaanza hapa.</p>
+        </div>
+
+        <!-- Benefits Card -->
+        <div class="card border-0 shadow-sm rounded-3 p-4 mb-3" style="border-top:4px solid #10B981 !important;">
+          <p class="fw-bold mb-3" style="color:#1A3A5C;">✅ Unapata Nini kwa VIP?</p>
+          <div class="d-flex flex-column gap-2">
+            <div class="d-flex align-items-center gap-2">
+              <span style="color:#10B981;">⚽</span>
+              <span class="small" style="color:#0F172A;">Special tips za mechi kila siku</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span style="color:#10B981;">📊</span>
+              <span class="small" style="color:#0F172A;">Uchambuzi wa kina kutoka kwa wataalamu</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span style="color:#10B981;">🎯</span>
+              <span class="small" style="color:#0F172A;">Odds bora zilizochaguliwa kwa makini</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span style="color:#10B981;">🔒</span>
+              <span class="small" style="color:#0F172A;">Access ya tips za siri ambazo wengine hawapati</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <span style="color:#10B981;">📱</span>
+              <span class="small" style="color:#0F172A;">Support ya moja kwa moja kila wakati</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Card -->
+        <div class="card border-0 shadow rounded-3 p-4 mb-3 text-center" style="background:#1A3A5C;">
+          <p class="small fw-semibold mb-1" style="color:#94A3B8;">MONTHLY PLAN</p>
+          <div class="fw-bold text-white mb-1" style="font-size:2.5rem;">TSh 5,000</div>
+          <p class="small mb-3" style="color:#10B981;">kwa mwezi mmoja — tips za kila siku</p>
+
+          <!-- Payment Logos -->
+          <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-2 fw-bold small" style="background:#e8f5e9;color:#388e3c;">M-Pesa</span>
+            <span class="px-3 py-1 rounded-2 fw-bold small" style="background:#e3f2fd;color:#1565c0;">Tigo Pesa</span>
+            <span class="px-3 py-1 rounded-2 fw-bold small" style="background:#fff3e0;color:#e65100;">Airtel Money</span>
+          </div>
+
+          <!-- CTA Button -->
+          <a href="/pay" class="btn w-100 fw-bold py-2 text-white"
+             style="background:#10B981; border-radius:8px; font-size:1rem; letter-spacing:0.5px;">
+            👑 Lipia Sasa — TSh 5,000
+          </a>
+        </div>
+
+        <p class="text-center small mt-2" style="color:#94A3B8;">
+          🔒 Salama. Utaanzishwa mara moja baada ya malipo.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
